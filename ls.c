@@ -14,7 +14,11 @@ int main(int argc, char *argv[]){
     struct dirent *entry;
     
     while ((entry = readdir(dir)) != NULL) {
+        if (entry -> d_name[0] == '.') continue;
         printf("%s\n",entry -> d_name); // (*entry).d_name is truncated to ->
     }
+
+    closedir(dir);
+
     return 0;
 }
